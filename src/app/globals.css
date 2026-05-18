@@ -33,20 +33,31 @@
 }
 
 @theme {
-  /* Lifted from live animatewp.com Twenty Twenty-Four palette */
+  /* Lifted from live animatewp.com computed styles */
   --color-paper: #f3f0e7;
   --color-paper-2: #eceadf;
   --color-ink: #a62b0c;
-  --color-ink-soft: rgba(166, 43, 12, 0.78);
-  --color-ink-mute: rgba(166, 43, 12, 0.65);
-  --color-rule: rgba(166, 43, 12, 0.18);
+  --color-ink-github: #24292d;
 
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-serif: "Cardo", ui-serif, Georgia, Cambria, "Times New Roman", Times,
     serif;
 
-  --container-content: 1280px;
+  --container-content: 1232px; /* alignwide */
+  --container-narrow: 620px; /* constrained */
+  --container-text: 565px; /* inner text width inside constrained */
+
+  /* Fluid scale: 31.2px @ 390vw → 104px @ 1440vw (matches live) */
+  --section-gutter: clamp(31.2px, calc(0.26rem + 6.93vw), 104px);
+
+  /* Fluid display type — H1/H2 */
+  --fs-display: clamp(30.36px, calc(1.674rem + 0.918vw), 40px);
+  --lh-display: 1.2;
+
+  /* Fluid sub-heading type — H3 (Key Benefits, etc.) */
+  --fs-h3: clamp(22.78px, calc(1.265rem + 0.65vw), 29.6px);
+  --lh-h3: 1.2;
 }
 
 html {
@@ -59,8 +70,8 @@ html {
 
 body {
   font-family: var(--font-sans);
-  font-size: 1.05rem; /* 16.8px — matches live site */
-  line-height: 1.6;
+  font-size: 1.05rem; /* 16.8px */
+  line-height: 1.55; /* 26.04/16.8 */
   font-weight: 400;
   color: var(--color-ink);
   background: var(--color-paper);
@@ -84,14 +95,6 @@ h2 {
   font-weight: 400;
   color: var(--color-ink);
   letter-spacing: normal;
-  line-height: 1.15;
-}
-
-h3 {
-  /* Default to the "sub-heading" Cardo style — small card titles override via class */
-  font-family: var(--font-serif);
-  font-weight: 400;
-  color: var(--color-ink);
   line-height: 1.2;
 }
 
@@ -106,17 +109,19 @@ video {
   color: var(--color-paper);
 }
 
+/* ------- Button (matches .wp-block-button__link from live) ------- */
 .awp-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   background: var(--color-ink);
   color: var(--color-paper);
-  font-size: 0.9rem;
+  font-family: var(--font-sans);
+  font-size: 0.9rem; /* 14.4px */
   font-weight: 500;
-  line-height: 1.5;
-  padding: 0.6em 1em;
-  border-radius: 0.33em;
+  line-height: 1.55;
+  padding: 9.6px 16px;
+  border-radius: 5.28px;
   text-decoration: none;
   transition: opacity 150ms ease;
 }
@@ -124,6 +129,78 @@ video {
 .awp-button:hover {
   opacity: 0.9;
   text-decoration: none;
+}
+
+/* ------- Asterisk decoration (Twenty Twenty-Four "is-style-asterisk") ------- */
+/* Renders a rust-colored asterisk glyph above the heading via clip-path */
+.awp-asterisk::before {
+  content: "";
+  display: block;
+  width: 1.5rem;
+  height: 3rem;
+  background: currentColor;
+  clip-path: path(
+    "M 11.93 0.684 v 8.039 l 5.633 -5.633 l 1.216 1.23 l -5.66 5.66 h 8.04 v 1.737 H 13.2 l 5.701 5.701 l -1.23 1.23 l -5.742 -5.742 V 21 h -1.737 v -8.094 l -5.77 5.77 l -1.23 -1.217 l 5.743 -5.742 H 0.842 V 9.98 h 8.162 l -5.701 -5.7 l 1.23 -1.231 l 5.66 5.66 V 0.684 h 1.737 Z"
+  );
+}
+
+.awp-asterisk-center::before {
+  margin: 0 auto;
+}
+
+/* ------- Checkmark list (matches .is-style-checkmark-list from live) ------- */
+.awp-checkmark-list {
+  list-style: none;
+  padding-left: 16px;
+  margin: 0;
+}
+
+.awp-checkmark-list > li {
+  position: relative;
+  padding-left: 10.5px;
+  line-height: 1.75; /* 29.4/16.8 */
+}
+
+.awp-checkmark-list > li::before {
+  content: "✓";
+  position: absolute;
+  left: -16px;
+  top: 0;
+  color: var(--color-ink);
+  font-weight: 400;
+}
+
+/* ------- Numbered list (Simple to Use) ------- */
+.awp-numbered-list {
+  list-style: decimal;
+  padding-left: 16px;
+  margin: 0;
+}
+
+.awp-numbered-list > li {
+  padding-left: 0;
+  line-height: 1.75;
+}
+
+.awp-numbered-list > li::marker {
+  color: var(--color-ink);
+}
+
+/* ------- Image is-style-rounded (24px radius like live site) ------- */
+.awp-rounded {
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+/* ------- Fluid typography helpers ------- */
+.awp-display {
+  font-size: var(--fs-display);
+  line-height: var(--lh-display);
+}
+
+.awp-h3 {
+  font-size: var(--fs-h3);
+  line-height: var(--lh-h3);
 }
 
 @media (prefers-reduced-motion: reduce) {

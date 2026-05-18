@@ -3,11 +3,11 @@ import Link from "next/link";
 export default function Header() {
   return (
     <header className="w-full">
-      <div className="mx-auto flex max-w-[var(--container-content)] items-center justify-between gap-6 px-6 py-8 sm:px-10 sm:py-10">
+      <div className="mx-auto flex w-full max-w-[var(--container-content)] items-center justify-between gap-5 px-[var(--section-gutter)] py-5">
         <Link
           href="/"
           aria-current="page"
-          className="text-sm font-semibold tracking-wide text-ink"
+          className="font-sans text-[1.2rem] font-semibold leading-[1.55] tracking-tight text-ink no-underline"
         >
           AnimateWP
         </Link>
@@ -16,11 +16,11 @@ export default function Header() {
           target="_blank"
           rel="noreferrer noopener nofollow"
           aria-label="AnimateWP on GitHub"
-          className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#24292d] text-white transition-transform hover:scale-110"
+          className="inline-flex h-6 w-6 items-center justify-center text-[var(--color-ink-github)] transition-transform hover:scale-110"
         >
           <svg
             viewBox="0 0 24 24"
-            className="h-4 w-4"
+            className="h-6 w-6"
             fill="currentColor"
             aria-hidden="true"
           >

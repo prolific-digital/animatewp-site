@@ -2,35 +2,39 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="w-full mt-auto">
-      <div className="mx-auto flex max-w-[var(--container-content)] flex-col items-center gap-3 px-6 pb-10 pt-4 sm:px-10">
-        <Link
-          href="/"
-          aria-current="page"
-          className="text-sm font-semibold tracking-wide text-ink"
-        >
-          AnimateWP
-        </Link>
-        <p className="text-sm text-ink/90">
-          Designed with{" "}
-          <a
-            href="https://wordpress.org"
-            target="_blank"
-            rel="noreferrer noopener"
-            className="underline underline-offset-4"
+    <footer className="w-full">
+      <div className="mx-auto w-full max-w-[var(--container-content)] px-[var(--section-gutter)] py-[var(--section-gutter)]">
+        <div className="flex justify-center">
+          <Link
+            href="/"
+            aria-current="page"
+            className="font-sans text-[1.05rem] font-semibold leading-[1.55] tracking-tight text-ink no-underline"
           >
-            WordPress
-          </a>{" "}
-          by{" "}
-          <a
-            href="https://prolificdigital.com/"
-            target="_blank"
-            rel="noreferrer noopener"
-            className="underline underline-offset-4"
-          >
-            Prolific Digital
-          </a>
-        </p>
+            AnimateWP
+          </Link>
+        </div>
+        <div className="mt-[var(--section-gutter)]">
+          <p className="text-center text-[0.9rem] leading-[1.55] text-ink">
+            Designed with{" "}
+            <a
+              href="https://wordpress.org"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="underline-offset-4 hover:underline"
+            >
+              WordPress
+            </a>{" "}
+            by{" "}
+            <a
+              href="https://prolificdigital.com/"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="underline-offset-4 hover:underline"
+            >
+              Prolific Digital
+            </a>
+          </p>
+        </div>
       </div>
     </footer>
   );
