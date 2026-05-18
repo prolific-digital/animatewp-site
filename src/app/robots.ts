@@ -8,7 +8,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
       },
     ],
-    sitemap: "https://animatewp.com/sitemap.xml",
-    host: "https://animatewp.com",
+    sitemap: "https://www.animatewp.com/sitemap.xml",
+    host: "https://www.animatewp.com",
   };
 }

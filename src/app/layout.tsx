@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
-const SITE_URL = "https://animatewp.com";
+const SITE_URL = "https://www.animatewp.com";
 const GITHUB_URL = "https://github.com/prolific-digital/animatewp";
 const DOCS_URL =
   "https://prolificdigital.notion.site/AnimateWP-Documentation-138f73948280458d9a2bcd298ac62354";
