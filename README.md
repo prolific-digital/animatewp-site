@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# animatewp.com
 
-## Getting Started
+Static marketing site for the [AnimateWP](https://github.com/prolific-digital/animatewp) WordPress plugin.
 
-First, run the development server:
+This replaces the original WordPress install (Twenty Twenty-Four + Rank Math + AnimateWP). The content is evergreen and the site is fully static — no CMS, no server runtime.
+
+## Stack
+
+- [Next.js 16](https://nextjs.org/) (App Router, Turbopack) — React 19, TypeScript
+- [Tailwind CSS v4](https://tailwindcss.com/) with `@theme` design tokens
+- [GSAP](https://gsap.com/) + ScrollTrigger via [`@gsap/react`](https://gsap.com/resources/React/) for scroll-triggered animations (respects `prefers-reduced-motion`)
+- Self-hosted Inter (variable) and Cardo (regular/italic/bold) fonts in `public/fonts/`
+- Deployed to Vercel; prerendered as static at build time
+
+## Local development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project layout
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/
+  app/
+    layout.tsx         Metadata API (title, OG, Twitter, canonical, robots)
+    page.tsx           Composes the single-page sections
+    globals.css        Tailwind v4 + @font-face + @theme tokens
+    icon.svg           Favicon
+    robots.ts          robots.txt route
+    sitemap.ts         sitemap.xml route
+  components/
+    Header.tsx
+    Hero.tsx
+    WhyChoose.tsx
+    Features.tsx
+    AdvancedSettings.tsx
+    GetStarted.tsx
+    Footer.tsx
+    AnimateOnScroll.tsx   Reusable GSAP/ScrollTrigger wrapper
+public/
+  images/              demo.gif, screenshot.png, abstract-2.webp, abstract-3.webp
+  fonts/               Inter + Cardo woff2 files
+  og/og-image.png      Open Graph preview
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Source content
 
-## Learn More
+The plugin docs live on Notion: <https://prolificdigital.notion.site/AnimateWP-Documentation-138f73948280458d9a2bcd298ac62354>.
+The plugin source lives at <https://github.com/prolific-digital/animatewp>.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Copy and design tokens (rust-on-cream palette, Cardo display, Inter body) were ported 1:1 from the original WordPress site at the time of migration.

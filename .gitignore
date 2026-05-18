@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local screenshots / playwright artifacts (verification only)
+.playwright-mcp/
+/our-*.png
+/live-*.png
